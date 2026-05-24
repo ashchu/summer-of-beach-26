@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4th of July Weekend Guide 🇺🇸</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fdf8f3;
+    color: #2c2c2c;
+    min-height: 100vh;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1a2744 0%, #2d4a8a 40%, #c0392b 75%, #e74c3c 100%);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦';
+    position: absolute; top: 16px; left: 0; right: 0;
+    font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 8px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .hero .subtitle {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.05em;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero .tags {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px;
+  }
+  .hero .tag {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.78em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .nav-tabs {
+    background: #fff;
+    border-bottom: 2px solid #e8e0d8;
+    display: flex;
+    overflow-x: auto;
+    padding: 0 24px;
+    gap: 4px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .nav-tab {
+    padding: 14px 18px;
+    cursor: pointer;
+    font-size: 0.82em;
+    font-weight: 500;
+    color: #888;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .nav-tab.active, .nav-tab:hover {
+    color: #c0392b;
+    border-bottom-color: #c0392b;
+  }
+
+  .content { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .destination-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 28px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+    border: 1px solid #f0e8e0;
+  }
+
+  .card-header {
+    padding: 28px 32px 20px;
+    border-bottom: 1px solid #f5ede6;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .card-header-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6em;
+    color: #1a2744;
+    margin-bottom: 4px;
+  }
+  .card-header-left .location-tag {
+    font-size: 0.78em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #999;
+    font-weight: 500;
+  }
+
+  .card-header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .price-badge {
+    background: linear-gradient(135deg, #1a2744, #2d4a8a);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.82em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .capacity-note {
+    font-size: 0.75em;
+    color: #bbb;
+  }
+
+  .card-body { padding: 24px 32px; }
+
+  .tldr {
+    background: linear-gradient(135deg, #fef9f0, #fef3f3);
+    border-left: 4px solid #c0392b;
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 24px;
+    font-size: 0.92em;
+    line-height: 1.7;
+    color: #3a3a3a;
+  }
+  .tldr strong { color: #c0392b; }
+
+  .section-label {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #c0392b;
+    font-weight: 600;
+    margin-bottom: 12px;
+    margin-top: 20px;
+  }
+
+  .itinerary {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .itinerary-day {
+    display: flex;
+    gap: 16px;
+    position: relative;
+  }
+  .itinerary-day:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 40px;
+    bottom: -4px;
+    width: 2px;
+    background: linear-gradient(#ddd, #f0e8e0);
+  }
+  .day-circle {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .day-content {
+    padding: 10px 0 24px;
+    flex: 1;
+  }
+  .day-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1em;
+    color: #1a2744;
+    margin-bottom: 8px;
+  }
+  .day-activities {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .activity {
+    display: flex;
+    gap: 8px;
+    font-size: 0.85em;
+    color: #555;
+    line-height: 1.5;
+    align-items: flex-start;
+  }
+  .activity .time {
+    min-width: 60px;
+    color: #999;
+    font-size: 0.88em;
+    padding-top: 1px;
+  }
+  .activity .act-text { flex: 1; }
+  .activity .emoji { font-size: 1.1em; }
+
+  .logistics {
+    background: #f8f5ff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 16px;
+  }
+  .logistics-row {
+    display: flex;
+    gap: 10px;
+    font-size: 0.83em;
+    color: #555;
+    padding: 5px 0;
+    border-bottom: 1px solid #efe8fc;
+    align-items: flex-start;
+  }
+  .logistics-row:last-child { border-bottom: none; }
+  .logistics-row .l-label {
+    min-width: 90px;
+    color: #888;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 0.5px;
+    padding-top: 1px;
+  }
+
+  .flag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.78em;
+    color: #555;
+  }
+  .flag.green { background: #edfaf0; color: #2a7a3a; }
+  .flag.red { background: #fdf0ef; color: #c0392b; }
+  .flag.yellow { background: #fffbeb; color: #b7791f; }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.85em;
+  }
+  .comparison-table th {
+    background: #1a2744;
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-size: 0.82em;
+    text-transform: uppercase;
+  }
+  .comparison-table th:first-child { border-radius: 10px 0 0 0; }
+  .comparison-table th:last-child { border-radius: 0 10px 0 0; }
+  .comparison-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0e8e0;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .comparison-table tr:last-child td { border-bottom: none; }
+  .comparison-table tr:nth-child(even) td { background: #fdf9f6; }
+  .comparison-table .dest-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1em;
+    color: #1a2744;
+    font-weight: 700;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75em;
+    font-weight: 600;
+    margin-right: 3px;
+  }
+  .pill-green { background: #e8f8ec; color: #2a7a3a; }
+  .pill-red { background: #fde8e6; color: #c0392b; }
+  .pill-yellow { background: #fef3cd; color: #9a6400; }
+  .pill-blue { background: #e6f0fd; color: #1a56b0; }
+  .pill-purple { background: #f3e8fd; color: #7928ca; }
+
+  .tsitpquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #888;
+    font-size: 0.88em;
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2em; }
+    .card-header { flex-direction: column; }
+    .card-header-right { align-items: flex-start; }
+    .card-body { padding: 20px 18px; }
+    .card-header { padding: 20px 18px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>✦ The 4th of July Edit ✦</h1>
+  <div class="subtitle">8 Girls · From NYC · July 3–6, 2026</div>
+  <div class="tags">
+    <span class="tag">🏖 Beach Days</span>
+    <span class="tag">🧨 Fireworks</span>
+    <span class="tag">🫐 Farm Picking</span>
+    <span class="tag">🎆 American Girl Summer</span>
+    <span class="tag">📺 TSITP Energy</span>
+  </div>
+</div>
+
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showSection('compare')">At a Glance</div>
+  <div class="nav-tab" onclick="showSection('southampton')">Southampton</div>
+  <div class="nav-tab" onclick="showSection('fireisland')">Fire Island</div>
+  <div class="nav-tab" onclick="showSection('montauk')">Montauk</div>
+  <div class="nav-tab" onclick="showSection('narragansett')">Narragansett</div>
+  <div class="nav-tab" onclick="showSection('westport')">Westport RI</div>
+  <div class="nav-tab" onclick="showSection('rockypoint')">Rocky Point</div>
+</div>
+
+<div class="content">
+
+  <!-- COMPARE TAB -->
+  <div class="section active" id="compare">
+    <div style="padding-top: 28px;">
+      <div class="section-label">Quick Comparison</div>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Destination</th>
+            <th>Vibe</th>
+            <th>Getting There</th>
+            <th>Fireworks</th>
+            <th>Farm Access</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="dest-name">Southampton</span><br><span style="font-size:0.8em;color:#999">Hamptons, NY</span></td>
+            <td>Classic Hamptons glam, parade energy, seen-and-be-seen</td>
+            <td><span class="pill pill-green">LIRR direct</span> ~2h</td>
+            <td><span class="pill pill-green">✓ Amazing</span> Grucci over Shinnecock Bay</td>
+            <td><span class="pill pill-yellow">Nearby</span> farm stands + Bridgehampton farms</td>
+            <td>~$500pp</td>
+          </tr>
+          <tr>
+            <td><span class="dest-name">Fire Island</span><br><span style="font-size:0.8em;color:#999">Ocean Bay Park / Ocean Beach</span></td>
+            <td>Car-free beach town, bars, social, festive crowd</td>
+            <td><span class="pill pill-green">LIRR + ferry</span> ~2.5h</td>
+            <td><span class="pill pill-green">✓ Great</span> Point O'Woods barge show visible from shore</td>
+            <td><span class="pill pill-red">Limited</span> island has no farms</td>
+            <td>~$480–630pp</td>
+          </tr>
+          <tr>
+            <td><span class="dest-name">Montauk</span><br><span style="font-size:0.8em;color:#999">East End, NY</span></td>
+            <td>Surfy, rugged, end-of-world cool. Most TSITP.</td>
+            <td><span class="pill pill-green">LIRR direct</span> ~3h</td>
+            <td><span class="pill pill-green">✓ Iconic</span> Stars Over Montauk (Grucci), Umbrella Beach 9pm</td>
+            <td><span class="pill pill-yellow">Short drive</span> Hamptons farms nearby, rent bikes</td>
+            <td>~$555pp</td>
+          </tr>
+          <tr>
+            <td><span class="dest-name">Narragansett</span><br><span style="font-size:0.8em;color:#999">Rhode Island</span></td>
+            <td>New England beach town, quieter, open-sky RI vibe</td>
+            <td><span class="pill pill-yellow">Bus/rental car</span> ~3h drive</td>
+            <td><span class="pill pill-green">✓ Yes</span> Narragansett Town Beach, July 3rd dusk</td>
+            <td><span class="pill pill-green">Yes!</span> RI has great PYO berry farms nearby</td>
+            <td>~$512pp</td>
+          </tr>
+          <tr>
+            <td><span class="dest-name">Westport, RI</span><br><span style="font-size:0.8em;color:#999">Rhode Island</span></td>
+            <td>Quiet, local, coastal New England. Budget pick.</td>
+            <td><span class="pill pill-yellow">Bus/rental car</span> ~3h drive</td>
+            <td><span class="pill pill-yellow">~30 min</span> to Newport or Narragansett fireworks</td>
+            <td><span class="pill pill-green">Yes!</span> Berry Hill Farm blueberries, Town Farm tours</td>
+            <td>~$347pp</td>
+          </tr>
+          <tr>
+            <td><span class="dest-name">Rocky Point, NY</span><br><span style="font-size:0.8em;color:#999">Suffolk, Long Island</span></td>
+            <td>Suburban LI beach town, farms, Manny's Beach Club</td>
+            <td><span class="pill pill-yellow">LIRR + Uber/bus</span> ~2h + transfer</td>
+            <td><span class="pill pill-yellow">Nearby</span> Manny's Beach Club fireworks display</td>
+            <td><span class="pill pill-green">Best pick!</span> Fruit farms a short drive away</td>
+            <td>~$512pp</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 32px; background: #fff; border-radius: 16px; padding: 24px 28px; border: 1px solid #f0e8e0; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+      <div class="section-label">The TSITP Verdict 🌊</div>
+      <p style="font-size:0.9em; line-height:1.8; color:#444;">
+        <strong>If you want peak American Girl 4th:</strong> <em>Southampton</em> — parade, Grucci fireworks, Hamptons farm stands, a big group house. Classic, cinematic, the works.<br><br>
+        <strong>If you want the most fun social weekend:</strong> <em>Fire Island</em> — no cars, ferry vibes, everyone on the same strip of beach, bars open late.<br><br>
+        <strong>If you want TSITP summer-core:</strong> <em>Montauk</em> — bikes, surfboards, Umbrella Beach fireworks, Ruschmeyers pig roast, end-of-the-world energy. Belly was definitely here.<br><br>
+        <strong>If you want the most budget-friendly + farm day:</strong> <em>Westport RI</em> — lowest price, Berry Hill Farm blueberry picking, quiet New England beach. Drive is doable with a rental.<br><br>
+        <strong>If you want New England 4th vibes with room to breathe:</strong> <em>Narragansett</em> — fireworks over the ocean, big house, RI farm day possible, Newport nearby.
+      </p>
+    </div>
+    <p class="tsitpquote">"It was the summer everything changed." — The Summer I Turned Pretty</p>
+  </div>
+
+  <!-- SOUTHAMPTON -->
+  <div class="section" id="southampton">
+    <div class="destination-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="location-tag">Hamptons, Long Island, NY</div>
+          <h2>Southampton</h2>
+        </div>
+        <div class="card-header-right">
+          <div class="price-badge">~$500 / person</div>
+          <div class="capacity-note">Sleeps 6 + hammock/couch</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tldr">
+          <strong>TLDR:</strong> The most classically American 4th you can do. Southampton runs one of Long Island's biggest 4th of July parades down North Main Street, and the Grucci fireworks over Shinnecock Bay are legendary. Think Hamptons farm stands, sun-bleached linen, beach chairs, and the parade route filling with locals. This is the aspirational summer postcard.
+        </div>
+
+        <div class="section-label">Getting There from NYC</div>
+        <div class="logistics">
+          <div class="logistics-row"><span class="l-label">Train</span><span>LIRR from Penn Station / Atlantic Terminal → Southampton (direct on Montauk Branch). ~2–2.5 hrs. $20–30 one way.</span></div>
+          <div class="logistics-row"><span class="l-label">At Destination</span><span>No car needed in the village — Uber/Lyft or bikes. Rent bikes to explore town and beaches.</span></div>
+          <div class="logistics-row"><span class="l-label">Pro Tip</span><span>Book LIRR early — holiday weekend trains fill up fast. Leave NYC by 7am on July 3.</span></div>
+        </div>
+
+        <div class="section-label">Itinerary — 2 Days (Fri July 3 – Sun July 5)</div>
+        <div class="itinerary">
+          <div class="itinerary-day">
+            <div class="day-circle">FRI<br>7/3</div>
+            <div class="day-content">
+              <h4>Arrive + Settle In</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">7am</span><span class="emoji">🚆</span><span class="act-text">Early LIRR from Penn. Coffee and pastries on the train.</span></div>
+                <div class="activity"><span class="time">10am</span><span class="emoji">🏡</span><span class="act-text">Arrive, drop bags, make a big grocery run — BBQ supplies, American flag decorations, sparklers.</span></div>
+                <div class="activity"><span class="time">12pm</span><span class="emoji">🏖</span><span class="act-text">Beach afternoon at Cooper's Beach or Road to the Beach (Shinnecock). Blankets, paddleball, SPF.</span></div>
+                <div class="activity"><span class="time">5pm</span><span class="emoji">🌿</span><span class="act-text">Stop at a Hamptons farm stand (Invincible Summer Farms or Pike Farms in Sagaponack) for corn, tomatoes, peaches, flowers.</span></div>
+                <div class="activity"><span class="time">7pm</span><span class="emoji">🍔</span><span class="act-text">Backyard BBQ — grill everything. Lawn games: spikeball, bocce, cornhole.</span></div>
+                <div class="activity"><span class="time">9:15pm</span><span class="emoji">🎆</span><span class="act-text">Grucci fireworks over Shinnecock Bay — walk or bike to waterfront. Grab blankets and rosé.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SAT<br>7/4</div>
+            <div class="day-content">
+              <h4>The 4th — Parade + Fireworks</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">9am</span><span class="emoji">☕</span><span class="act-text">Coffee + fresh pastries. Dress in your best red, white, and blue.</span></div>
+                <div class="activity"><span class="time">10am</span><span class="emoji">🎺</span><span class="act-text">Southampton Fourth of July Parade on North Main St — one of Long Island's biggest. Grab a good sidewalk spot early.</span></div>
+                <div class="activity"><span class="time">1pm</span><span class="emoji">🌊</span><span class="act-text">Beach afternoon — Cooper's Beach or Flying Point Beach. Bring the full setup: speakers, games, snacks, matching towels.</span></div>
+                <div class="activity"><span class="time">5pm</span><span class="emoji">🫙</span><span class="act-text">Head to North Sea Fire Dept. Carnival (149 Noyack Rd) for rides, fair food, carnival games.</span></div>
+                <div class="activity"><span class="time">8pm</span><span class="emoji">🥂</span><span class="act-text">Backyard pre-show with sparklers, s'mores over the grill, patriotic playlist.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SUN<br>7/5</div>
+            <div class="day-content">
+              <h4>Slow Morning + Brunch + Head Home</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">10am</span><span class="emoji">🥞</span><span class="act-text">Backyard brunch spread — egg bakes, fruit, bagels from a local shop.</span></div>
+                <div class="activity"><span class="time">12pm</span><span class="emoji">🌸</span><span class="act-text">Walk Main Street / Jobs Lane — boutiques, grab a scoop at Kohr Brothers.</span></div>
+                <div class="activity"><span class="time">2pm</span><span class="emoji">🚆</span><span class="act-text">LIRR back to NYC.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flag-row">
+          <span class="flag green">✓ LIRR direct</span>
+          <span class="flag green">✓ Parade + Grucci fireworks</span>
+          <span class="flag green">✓ Farm stands nearby</span>
+          <span class="flag green">✓ Classic Hamptons 4th</span>
+          <span class="flag red">⚠ Sleeps only 6</span>
+          <span class="flag red">⚠ Very crowded holiday weekend</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIRE ISLAND -->
+  <div class="section" id="fireisland">
+    <div class="destination-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="location-tag">Ocean Bay Park / Ocean Beach, Fire Island, NY</div>
+          <h2>Fire Island</h2>
+        </div>
+        <div class="card-header-right">
+          <div class="price-badge">~$480–630 / person</div>
+          <div class="capacity-note">Sleeps 8–10 (two listings)</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tldr">
+          <strong>TLDR:</strong> No cars, a ferry, and a barrier island packed with bungalows, beach bars, and community spirit. The Point O'Woods fireworks light up the Great South Bay from a barge — visible from almost every community on the island. Ocean Beach has a children's parade, bars along Bay Walk, and the kind of energy where you feel like you've stepped into another world. The most fun, social option on this list.
+        </div>
+
+        <div class="section-label">Getting There from NYC</div>
+        <div class="logistics">
+          <div class="logistics-row"><span class="l-label">Train</span><span>LIRR from Penn Station → Bay Shore (Babylon Branch). ~1 hr. Then a 25-min ferry to Ocean Beach or Ocean Bay Park. ~$30 train + ~$12–15 ferry each way.</span></div>
+          <div class="logistics-row"><span class="l-label">No Cars</span><span>Everything on the island is walkable or by wagon. Bring a wagon/cart for luggage — a staple of Fire Island life.</span></div>
+          <div class="logistics-row"><span class="l-label">Tip</span><span>Book round-trip ferry tickets in advance for the holiday weekend. Last ferry back is late — confirm times.</span></div>
+        </div>
+
+        <div class="section-label">Itinerary — 2 Days (Fri July 3 – Sun July 5)</div>
+        <div class="itinerary">
+          <div class="itinerary-day">
+            <div class="day-circle">FRI<br>7/3</div>
+            <div class="day-content">
+              <h4>Ferry Day + Beach + Bars</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">7am</span><span class="emoji">🚆</span><span class="act-text">LIRR to Bay Shore, morning ferry over. Arrive on the island feeling like you've escaped.</span></div>
+                <div class="activity"><span class="time">10am</span><span class="emoji">🏡</span><span class="act-text">Settle into the house. Walk out to the ocean beach — 1 min away.</span></div>
+                <div class="activity"><span class="time">12pm</span><span class="emoji">🌊</span><span class="act-text">All-day beach setup. This is the whole plan.</span></div>
+                <div class="activity"><span class="time">5pm</span><span class="emoji">🍺</span><span class="act-text">Sunset on the bay side — cocktails at Houser's (Ocean Bay Park) or Matt's (Ocean Beach).</span></div>
+                <div class="activity"><span class="time">7pm</span><span class="emoji">🔥</span><span class="act-text">BBQ at the house — pick up supplies from the small island grocery.</span></div>
+                <div class="activity"><span class="time">10pm</span><span class="emoji">🎶</span><span class="act-text">Late-night bar crawl on Bay Walk. Fire Island nightlife is legendary on the 4th.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SAT<br>7/4</div>
+            <div class="day-content">
+              <h4>The 4th — Parade + Fireworks on the Bay</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">9am</span><span class="emoji">🎠</span><span class="act-text">Ocean Beach Children's 4th of July Parade — float decorations, kids on bikes, pure Americana charm.</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">🏖</span><span class="act-text">Beach day — ocean side. Frisbee, volleyball, SPF, matching suits.</span></div>
+                <div class="activity"><span class="time">4pm</span><span class="emoji">🛶</span><span class="act-text">Rent kayaks or paddleboards on the bay side.</span></div>
+                <div class="activity"><span class="time">7pm</span><span class="emoji">🌅</span><span class="act-text">Cocktail hour on the bay — lay down blankets for the best fireworks view of the trip.</span></div>
+                <div class="activity"><span class="time">9pm</span><span class="emoji">🎆</span><span class="act-text">Point O'Woods fireworks launched from a barge on the Great South Bay. Visible from shorelines across the island. Spectacular.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SUN<br>7/5</div>
+            <div class="day-content">
+              <h4>Last Morning + Ferry Home</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">9am</span><span class="emoji">☕</span><span class="act-text">Slow morning coffee, walk along the boardwalk, one more hour on the beach.</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">⛴</span><span class="act-text">Pack up and catch the ferry back to Bay Shore.</span></div>
+                <div class="activity"><span class="time">1pm</span><span class="emoji">🚆</span><span class="act-text">LIRR back to Penn/Atlantic Terminal.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flag-row">
+          <span class="flag green">✓ Train + ferry, no car needed</span>
+          <span class="flag green">✓ Bay fireworks are stunning</span>
+          <span class="flag green">✓ Most social/fun vibe</span>
+          <span class="flag green">✓ Car-free island magic</span>
+          <span class="flag red">⚠ No farms on the island</span>
+          <span class="flag yellow">~ Two listing options, check availability</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONTAUK -->
+  <div class="section" id="montauk">
+    <div class="destination-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="location-tag">East End, Long Island, NY</div>
+          <h2>Montauk ⭐ Most TSITP</h2>
+        </div>
+        <div class="card-header-right">
+          <div class="price-badge">~$555 / person</div>
+          <div class="capacity-note">Sleeps 8, 3 min to beach</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tldr">
+          <strong>TLDR:</strong> The end of Long Island — a surfy, sun-weathered fishing town that goes hard on the 4th. The "Stars Over Montauk" Grucci fireworks at Umbrella Beach (Kirk Park) are one of the East End's most beloved shows, launching over the Atlantic at 9pm. Ruschmeyers runs a legendary pig roast with lawn games and a DJ on the 4th. Rent bikes, hit the surf, explore the harbor. This is the closest thing to Cousins Beach you'll find in the northeast.
+        </div>
+
+        <div class="section-label">Getting There from NYC</div>
+        <div class="logistics">
+          <div class="logistics-row"><span class="l-label">Train</span><span>LIRR from Penn Station → Montauk (Montauk Branch, direct). ~3–3.5 hrs. $30–40 one way. Book early — holiday trains sell out.</span></div>
+          <div class="logistics-row"><span class="l-label">At Destination</span><span>Rent bikes when you arrive — Montauk Bike Shop or Puff 'N Putt. Everything is bikeable. Uber/Lyft for evenings.</span></div>
+          <div class="logistics-row"><span class="l-label">BBQ + Gear</span><span>House includes BBQ and beach gear. Bring beach games.</span></div>
+        </div>
+
+        <div class="section-label">Itinerary — 3 Days (Thu July 2 – Sun July 5) ✦ Recommended</div>
+        <div class="itinerary">
+          <div class="itinerary-day">
+            <div class="day-circle">THU<br>7/2</div>
+            <div class="day-content">
+              <h4>Arrive + Explore the Harbor</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">7am</span><span class="emoji">🚆</span><span class="act-text">Early LIRR from Penn Station to Montauk.</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">🏡</span><span class="act-text">Check in. Unpack, pick rooms, get into vacation mode.</span></div>
+                <div class="activity"><span class="time">1pm</span><span class="emoji">🚲</span><span class="act-text">Rent bikes. Ride out to Ditch Plains Beach — the surfy locals' beach.</span></div>
+                <div class="activity"><span class="time">5pm</span><span class="emoji">🦞</span><span class="act-text">Walk the harbor — Gosman's Dock for lobster rolls and sunsets over the fishing boats.</span></div>
+                <div class="activity"><span class="time">8pm</span><span class="emoji">🔥</span><span class="act-text">First house BBQ. Backyard games — cornhole, cards, sparklers to set the mood.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">FRI<br>7/3</div>
+            <div class="day-content">
+              <h4>Beach Day + Farm Stand</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">9am</span><span class="emoji">🌅</span><span class="act-text">Morning walk/run on Main Beach. Coffee from Hampton Coffee Co.</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">🏄</span><span class="act-text">Big beach day — surf lesson at Ditch Plains or relax at Main Beach. Boards, paddleball, volleyball.</span></div>
+                <div class="activity"><span class="time">3pm</span><span class="emoji">🌽</span><span class="act-text">Drive or Uber to farm stands — Sagaponack Farm or Bridgehampton farm stands for corn, peaches, tomatoes, flowers. Make it a haul.</span></div>
+                <div class="activity"><span class="time">6pm</span><span class="emoji">🧑‍🍳</span><span class="act-text">Cook with what you picked up. Corn on the grill, big outdoor spread in the backyard.</span></div>
+                <div class="activity"><span class="time">9pm</span><span class="emoji">🎆</span><span class="act-text">Pre-July 4th sparkler night in the backyard. Outdoor games under the stars.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SAT<br>7/4</div>
+            <div class="day-content">
+              <h4>The Big Day — Pig Roast + Umbrella Beach Fireworks</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">10am</span><span class="emoji">☕</span><span class="act-text">Slow patriotic morning. Make a full American breakfast spread.</span></div>
+                <div class="activity"><span class="time">12pm</span><span class="emoji">🐷</span><span class="act-text">Ruschmeyers Pig Roast (161 Second House Road) — spit-roasted pig, street corn, stone fruit salad, raw bar, DJ, lawn games (cornhole tournament). Runs noon–6pm.</span></div>
+                <div class="activity"><span class="time">5pm</span><span class="emoji">🌊</span><span class="act-text">Sunset walk to Umbrella Beach / Kirk Park. Set up a big group spot early with blankets and snacks.</span></div>
+                <div class="activity"><span class="time">9pm</span><span class="emoji">🎆</span><span class="act-text">"Stars Over Montauk" — Grucci fireworks over the Atlantic Ocean. Laid out on the sand watching fireworks over the water. Peak TSITP moment.</span></div>
+                <div class="activity"><span class="time">10:30pm</span><span class="emoji">🍹</span><span class="act-text">Late night at Surf Lodge or Montauk Beach House.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SUN<br>7/5</div>
+            <div class="day-content">
+              <h4>Brunch + Lighthouse + Head Home</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">10am</span><span class="emoji">🥞</span><span class="act-text">Brunch at Harvest on Fort Pond or just a big backyard spread.</span></div>
+                <div class="activity"><span class="time">12pm</span><span class="emoji">🗼</span><span class="act-text">Bike or Uber to Montauk Lighthouse State Park — the end of the earth. Very TSITP.</span></div>
+                <div class="activity"><span class="time">3pm</span><span class="emoji">🚆</span><span class="act-text">LIRR back to NYC from Montauk station.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flag-row">
+          <span class="flag green">✓ LIRR direct, no car needed</span>
+          <span class="flag green">✓ Iconic Grucci fireworks on the beach</span>
+          <span class="flag green">✓ Ruschmeyers pig roast = peak 4th</span>
+          <span class="flag green">✓ Most TSITP energy of all options</span>
+          <span class="flag yellow">~ Farm stands require short Uber</span>
+          <span class="flag yellow">~ 3h train is the longest of the LI options</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NARRAGANSETT -->
+  <div class="section" id="narragansett">
+    <div class="destination-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="location-tag">Rhode Island</div>
+          <h2>Narragansett, RI</h2>
+        </div>
+        <div class="card-header-right">
+          <div class="price-badge">~$512 / person</div>
+          <div class="capacity-note">Sleeps 12, 5 min to beach</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tldr">
+          <strong>TLDR:</strong> A classic New England beach town — think weathered shingles, lobster shacks, and Atlantic waves. The fireworks launch over Narragansett Town Beach on July 3rd at dusk (perfect timing for your trip), and Newport — 30 min away — fires off over Newport Harbor on the 4th at 9:15pm. You're also a short drive from Rhode Island's incredible PYO berry farms, and the house sleeps 12, so everyone has real beds.
+        </div>
+
+        <div class="section-label">Getting There from NYC</div>
+        <div class="logistics">
+          <div class="logistics-row"><span class="l-label">Rental Car</span><span>Best option — rent a couple of cars in NYC (~$100–150/day split). ~3 hr drive on I-95. Highly recommended for RI options.</span></div>
+          <div class="logistics-row"><span class="l-label">Bus</span><span>Peter Pan or FlixBus to Providence, then Uber/Lyft to Narragansett. ~3.5–4 hrs total.</span></div>
+          <div class="logistics-row"><span class="l-label">At Destination</span><span>Car useful for farm day and Newport trip, but walkable to town beach.</span></div>
+        </div>
+
+        <div class="section-label">Itinerary — 2 Days (Fri July 3 – Sun July 5)</div>
+        <div class="itinerary">
+          <div class="itinerary-day">
+            <div class="day-circle">FRI<br>7/3</div>
+            <div class="day-content">
+              <h4>Arrive + Beach + Fireworks Over the Atlantic</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">7am</span><span class="emoji">🚗</span><span class="act-text">Leave NYC very early — avoid I-95 traffic. Stop for Dunkin' on the way (it's RI, it's mandatory).</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">🏡</span><span class="act-text">Arrive, groceries, unpack. House fits everyone comfortably.</span></div>
+                <div class="activity"><span class="time">1pm</span><span class="emoji">🌊</span><span class="act-text">Narragansett Town Beach — gorgeous wide Atlantic beach. Boogie boards, paddleball, beach chairs.</span></div>
+                <div class="activity"><span class="time">5pm</span><span class="emoji">🫐</span><span class="act-text">Drive to a PYO berry farm — Harmony Farms or Four Town Farm for blueberries and raspberries. This is the farm moment you're looking for.</span></div>
+                <div class="activity"><span class="time">7pm</span><span class="emoji">🔥</span><span class="act-text">Backyard BBQ with the freshly picked berries — blueberry cobbler, grilled everything.</span></div>
+                <div class="activity"><span class="time">Dusk</span><span class="emoji">🎆</span><span class="act-text">Walk to Narragansett Town Beach for fireworks over the ocean. Feet in the sand, fireworks over the Atlantic. Unforgettable.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SAT<br>7/4</div>
+            <div class="day-content">
+              <h4>Newport Day + Harbor Fireworks</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">9am</span><span class="emoji">☕</span><span class="act-text">Slow morning, big breakfast at the house. Pastries, eggs, juice.</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">🏰</span><span class="act-text">Drive to Newport (~30 min) — walk the Cliff Walk, visit the mansions, explore Bowen's Wharf.</span></div>
+                <div class="activity"><span class="time">2pm</span><span class="emoji">🦞</span><span class="act-text">Lunch at Newport's waterfront. Clam chowder, lobster rolls, local seafood.</span></div>
+                <div class="activity"><span class="time">5pm</span><span class="emoji">🌊</span><span class="act-text">Beach afternoon at Easton's Beach (Newport) or back to Narragansett.</span></div>
+                <div class="activity"><span class="time">8pm</span><span class="emoji">🏙</span><span class="act-text">Head to King Park or Perrotti Park in Newport for the harbor fireworks.</span></div>
+                <div class="activity"><span class="time">9:15pm</span><span class="emoji">🎆</span><span class="act-text">Newport Harbor fireworks — launched over the water, viewable from the waterfront parks. One of RI's best.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SUN<br>7/5</div>
+            <div class="day-content">
+              <h4>Brunch + Drive Home</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">10am</span><span class="emoji">🥞</span><span class="act-text">Brunch in Narragansett or drive to Wickford Village for a pretty New England coastal town morning.</span></div>
+                <div class="activity"><span class="time">12pm</span><span class="emoji">🚗</span><span class="act-text">Drive back to NYC (~3 hrs). Leave before the rush.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flag-row">
+          <span class="flag green">✓ Sleeps 12, everyone has a real bed</span>
+          <span class="flag green">✓ Fireworks over the ocean July 3rd</span>
+          <span class="flag green">✓ Best PYO farm access of all options</span>
+          <span class="flag green">✓ Newport bonus day</span>
+          <span class="flag red">⚠ Requires rental car</span>
+          <span class="flag yellow">~ Longest commute, ~3h drive</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WESTPORT RI -->
+  <div class="section" id="westport">
+    <div class="destination-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="location-tag">Rhode Island / SE Massachusetts border</div>
+          <h2>Westport, RI</h2>
+        </div>
+        <div class="card-header-right">
+          <div class="price-badge">~$347 / person</div>
+          <div class="capacity-note">Sleeps 6 + couch space</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tldr">
+          <strong>TLDR:</strong> The quiet, local, genuinely agricultural option. Westport (technically on the MA/RI border, near Fall River) sits close to Horseneck State Beach and is surrounded by working farms — including Berry Hill Farm, which opens for blueberry picking in late June through August. Fireworks are a short drive to Narragansett or Newport. It's the most intimate, lowest-key option and the most budget-friendly by a significant margin.
+        </div>
+
+        <div class="section-label">Getting There from NYC</div>
+        <div class="logistics">
+          <div class="logistics-row"><span class="l-label">Rental Car</span><span>Best option — ~3 hrs from NYC on I-95 N. Rent 2 cars. Worth it for the farm access and flexibility.</span></div>
+          <div class="logistics-row"><span class="l-label">Bus</span><span>FlixBus/Peter Pan to Providence or Fall River, then Uber. More hassle, but doable.</span></div>
+          <div class="logistics-row"><span class="l-label">At Destination</span><span>Need a car to get around — Westport is rural/coastal. Farm is a short drive. Horseneck Beach is close.</span></div>
+        </div>
+
+        <div class="section-label">Itinerary — 2 Days (Fri July 3 – Sun July 5)</div>
+        <div class="itinerary">
+          <div class="itinerary-day">
+            <div class="day-circle">FRI<br>7/3</div>
+            <div class="day-content">
+              <h4>Arrive + Berry Picking + Beach</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">7am</span><span class="emoji">🚗</span><span class="act-text">Leave NYC early. Road trip energy — aux cord, snacks, good vibes.</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">🫐</span><span class="act-text">Stop at Berry Hill Farm (Town Farm Tonics) for PYO blueberries + frozen elderberry lemonade at the farm stand. This is a vibe.</span></div>
+                <div class="activity"><span class="time">1pm</span><span class="emoji">🏖</span><span class="act-text">Horseneck State Beach — 2.5 miles of open Atlantic shoreline. Bring the full setup.</span></div>
+                <div class="activity"><span class="time">6pm</span><span class="emoji">🔥</span><span class="act-text">BBQ with everything you picked up — grilled corn, burgers, fresh blueberry crisp for dessert.</span></div>
+                <div class="activity"><span class="time">8pm</span><span class="emoji">🎆</span><span class="act-text">Drive 30 min to Narragansett Town Beach for the July 3rd fireworks over the ocean at dusk.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SAT<br>7/4</div>
+            <div class="day-content">
+              <h4>The 4th — Big Backyard Day + Westport Town Farm</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">9am</span><span class="emoji">☕</span><span class="act-text">Big homemade 4th of July breakfast. Red, white, and blue fruit bowls (blueberries, strawberries, whipped cream).</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">🐄</span><span class="act-text">Westport Town Farm visit — animal farm experience, see the animals, pastoral New England morning.</span></div>
+                <div class="activity"><span class="time">2pm</span><span class="emoji">🏖</span><span class="act-text">Back to Horseneck Beach for the afternoon. Beach games, paddleball, catch, nap in the sun.</span></div>
+                <div class="activity"><span class="time">5pm</span><span class="emoji">🥳</span><span class="act-text">Outdoor field day in the backyard — frisbee, spikeball, egg toss, pie eating. Lean into the American Girl energy.</span></div>
+                <div class="activity"><span class="time">8pm</span><span class="emoji">✨</span><span class="act-text">Sparklers at dusk. Drive to Newport for 9:15pm harbor fireworks.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SUN<br>7/5</div>
+            <div class="day-content">
+              <h4>Slow Morning + Head Home</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">9am</span><span class="emoji">🥐</span><span class="act-text">Slow morning, leftover pastries and coffee in the yard.</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">🚗</span><span class="act-text">Drive back to NYC. Stop in Providence for brunch if you want.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flag-row">
+          <span class="flag green">✓ Best value by far (~$347pp)</span>
+          <span class="flag green">✓ Berry Hill Farm on your doorstep</span>
+          <span class="flag green">✓ Horseneck Beach is stunning</span>
+          <span class="flag red">⚠ Sleeps only 6 officially</span>
+          <span class="flag red">⚠ Requires rental car</span>
+          <span class="flag yellow">~ Fireworks require a drive</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROCKY POINT -->
+  <div class="section" id="rockypoint">
+    <div class="destination-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="location-tag">Suffolk County, Long Island, NY</div>
+          <h2>Rocky Point, NY</h2>
+        </div>
+        <div class="card-header-right">
+          <div class="price-badge">~$512 / person</div>
+          <div class="capacity-note">Sleeps 8</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tldr">
+          <strong>TLDR:</strong> Rocky Point is on Long Island Sound (North Shore), not the ocean — so it's calmer water, and the vibe is more local LI community than Hamptons glam. The big draw for your group: proximity to LI's amazing farm country (it's surrounded by farms and farm stands), and Manny's Beach Club runs a 4th of July fireworks celebration. Less Hamptons, more honest Long Island summer.
+        </div>
+
+        <div class="section-label">Getting There from NYC</div>
+        <div class="logistics">
+          <div class="logistics-row"><span class="l-label">Train</span><span>LIRR from Penn Station → Ronkonkoma or Port Jefferson (Port Jefferson Branch). ~1.5–2 hrs. Then Uber/Lyft to Rocky Point (~15–20 min, ~$25). No direct stop.</span></div>
+          <div class="logistics-row"><span class="l-label">Rental Car</span><span>Recommended if you want flexibility for farms and beaches. Rocky Point is spread out.</span></div>
+          <div class="logistics-row"><span class="l-label">Tip</span><span>Rocky Point is more car-oriented than the other LI options. Budget for Ubers or bring a car.</span></div>
+        </div>
+
+        <div class="section-label">Itinerary — 2 Days (Fri July 3 – Sun July 5)</div>
+        <div class="itinerary">
+          <div class="itinerary-day">
+            <div class="day-circle">FRI<br>7/3</div>
+            <div class="day-content">
+              <h4>Arrive + Farms + Beach</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">8am</span><span class="emoji">🚆</span><span class="act-text">LIRR from Penn to Ronkonkoma/Port Jeff, then Uber to the house.</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">🍓</span><span class="act-text">Drive to a nearby farm stand or PYO operation — North Fork farms are close. Pick strawberries, grab corn, sunflowers, peaches.</span></div>
+                <div class="activity"><span class="time">2pm</span><span class="emoji">🌊</span><span class="act-text">Rocky Point beaches on the Sound — calmer water, good for swimming. Or drive 20 min to Shoreham Beach.</span></div>
+                <div class="activity"><span class="time">6pm</span><span class="emoji">🔥</span><span class="act-text">Big BBQ night — all the farm stand haul on the grill. Backyard games under string lights.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SAT<br>7/4</div>
+            <div class="day-content">
+              <h4>The 4th — Field Day + Manny's Fireworks</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">9am</span><span class="emoji">🥞</span><span class="act-text">Full American breakfast. Flags out. Patriotic playlist going.</span></div>
+                <div class="activity"><span class="time">11am</span><span class="emoji">🏖</span><span class="act-text">Beach morning — cooler, sunscreen, games.</span></div>
+                <div class="activity"><span class="time">2pm</span><span class="emoji">🏅</span><span class="act-text">Big backyard field day — spikeball, cornhole tournament, water balloon fight, three-legged race. The backyard is a must for this group.</span></div>
+                <div class="activity"><span class="time">6pm</span><span class="emoji">🍦</span><span class="act-text">Drive for ice cream at a local stand.</span></div>
+                <div class="activity"><span class="time">8pm</span><span class="emoji">🎆</span><span class="act-text">Manny's Beach Club fireworks display — a beloved LI tradition. Blankets on the grass.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-day">
+            <div class="day-circle">SUN<br>7/5</div>
+            <div class="day-content">
+              <h4>Brunch + Head Home</h4>
+              <div class="day-activities">
+                <div class="activity"><span class="time">10am</span><span class="emoji">🥐</span><span class="act-text">Backyard brunch or local diner. Leisurely morning.</span></div>
+                <div class="activity"><span class="time">12pm</span><span class="emoji">🚆</span><span class="act-text">Uber to LIRR, train back to NYC.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flag-row">
+          <span class="flag green">✓ Sleeps 8, everyone fits</span>
+          <span class="flag green">✓ Best farm access on LI</span>
+          <span class="flag green">✓ Closer to NYC than Hamptons</span>
+          <span class="flag red">⚠ No direct LIRR stop (Uber required)</span>
+          <span class="flag red">⚠ Sound water, not ocean beach</span>
+          <span class="flag yellow">~ Less glam/social than other LI options</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
